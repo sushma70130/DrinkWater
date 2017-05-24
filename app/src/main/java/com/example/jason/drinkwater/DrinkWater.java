@@ -31,8 +31,8 @@ public class DrinkWater extends AppCompatActivity
         facts[5] = "The United States uses nearly 80 percent of its water for irrigation and thermoelectric power.";
         facts[6] = "In 2011, China reported 43 percent of state-monitored rivers were too polluted for human contact.";
         facts[7] = "In 2013, apx. 783 million people did not have access to clean water.";
-        facts[8] = "Less than 1% of the water supply on earth can be used as drinking water.";
-        facts[9] = "Groundwater can take a human lifetime just to traverse ONE mile.";
+        //facts[8] =  what are you talking about jason "Less than 1% of the water supply on earth can be used as drinking water.";
+        //facts[9] =  nice job "Groundwater can take a human lifetime just to traverse ONE mile.";
 
         setContentView(R.layout.activity_drink_water);
     }
