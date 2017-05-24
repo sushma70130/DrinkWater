@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.widget.RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#67bbdf"
+    tools:context="com.example.jason.drinkwater.DrinkWater"
+    tools:layout_editor_absoluteX="0dp"
+    tools:layout_editor_absoluteY="25dp">
+
+    <TextView
+        android:id="@+id/notificationLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1 Hour Notification:"
+        android:textSize="32dp"
+        android:layout_marginTop="147dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <Switch
+        android:id="@+id/notificationSwitch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/notificationLabel"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="72dp"
+        android:scaleX="2"
+        android:scaleY="2" />
+
+    <TextView
+        android:id="@+id/factLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="false"
+        android:text="Fact: The average human body is made of 50 to 65 percent water."
+        android:textAlignment="center"
+        android:textSize="48dp"
+        android:layout_centerVertical="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+        <!--android:textAppearance="@style/TextAppearance.AppCompat.Large" />-->
+
+    <Button
+        android:id="@+id/nextFactButton"
+        style="@style/Widget.AppCompat.Button"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/factLabel"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="102dp"
+        android:elevation="0dp"
+        android:onClick="nextFactButtonClick"
+        android:text="Next Fact"
+        android:textSize="20dp" />
+
+</android.widget.RelativeLayout>
