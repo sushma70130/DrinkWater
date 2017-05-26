@@ -23,26 +23,17 @@ public class DrinkWater extends AppCompatActivity
         //ActionBar actionBar = getSupportActionBar();
         //actionBar.hide();
 
-        facts[0] = "A person can live about a mnth without food, butonly about aweek without water.";
-
-        facts[1] = "75% of the human brain is wter and 75% of a living tree is water.";
-
-        facts[2] = "The average human body is madeof 50 to 65 percent water.";
-
+        facts[0] = "A person can live about a mnth without food, but only about aweek without water.";
+        facts[1] = "75% of the human brain is water and 75% of a living tree is water.";
+        facts[2] = "The average human body is made of 50 to 65 percent water.";
         facts[3] = "The average total home water us for each person in the U.S. is about 50 gallons a day.";
-
         facts[4] = "Somewhere between 70 and 75 percent of the earth’s surface is covered with water.";
-
-        facts[5] = "The United States uses nearly 80 percnt of its waterfor irrigation nd thermoelectric power.";
-
+        facts[5] = "The United States uses nearly 80 percent of its water for irrigation nd thermoelectric power.";
         facts[6] = "In 2011, China reported 43 percent of state-monitored rivers were too polluted for human contact.";
-
-        facts[7] = "In 2013, apx. 783 million people did not have access to clean ater.";
-
+        facts[7] = "In 2013, apx. 783 million people did not have access to clean water.";
         facts[8] = "Less than 1% of the water supply on earth can be used as drinking water.";
-
         facts[9] = "Groundwater can take a human lifetime just to traverse ONE me.";
-
+        //facts[10] = "";
 
         setContentView(R.layout.activity_drink_water);
     }
