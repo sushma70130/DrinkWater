@@ -14,6 +14,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.app.NotificationCompat;
 import android.view.View;
+import android.widget.CompoundButton;
+import android.widget.Switch;
 import android.widget.TextView;
 import java.util.Random;
 
@@ -46,6 +48,28 @@ public class DrinkWater extends AppCompatActivity
         //facts[10] = "";
 
         setContentView(R.layout.activity_drink_water);
+
+        // select switch id from activity_drink_water.xml
+        Switch notificationSwitch = (Switch) findViewById(R.id.notificationSwitch);
+
+        // set switch listener
+        // switch on:: set alarm manager on, set intent and notification every hour,
+        // switch off:: set alarm manager off,
+        notificationSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
+        {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked)
+            {
+                if(isChecked)
+                {
+
+                }
+                else
+                {
+
+                }
+            }
+        });
     }
 
 
@@ -60,6 +84,11 @@ public class DrinkWater extends AppCompatActivity
             i = r.nextInt(10);
         }
         tv.setText(facts[i]);
+
+
+
+
+
         NotificationCompat.Builder notification =  new NotificationCompat.Builder(this);
         notification.setSmallIcon(R.mipmap.ic_launcher)
         .setContentTitle("My Notification")

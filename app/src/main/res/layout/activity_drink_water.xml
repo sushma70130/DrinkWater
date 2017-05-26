@@ -26,8 +26,10 @@
         android:layout_below="@+id/notificationLabel"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="72dp"
+        android:checked="false"
         android:scaleX="2"
-        android:scaleY="2" />
+        android:scaleY="2"
+        tools:checked="false" />
 
     <TextView
         android:id="@+id/factLabel"
