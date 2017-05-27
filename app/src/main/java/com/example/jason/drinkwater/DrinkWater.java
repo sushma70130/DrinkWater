@@ -39,7 +39,7 @@ public class DrinkWater extends AppCompatActivity
         // sample code for removing action bar at top
         //ActionBar actionBar = getSupportActionBar();
         //actionBar.hide();
-
+        //tools:checked="true"
         facts[0] = "A person can live about a mnth without food, but only about aweek without water.";
         facts[1] = "75% of the human brain is water and 75% of a living tree is water.";
         facts[2] = "The average human body is made of 50 to 65 percent water.";
@@ -61,6 +61,23 @@ public class DrinkWater extends AppCompatActivity
         // set switch listener
         // switch on:: set alarm manager on, set intent and notification every hour,
         // switch off:: set alarm manager off,
+
+        Intent myIntent = new Intent(this, NoteService.class);
+
+        boolean alarmUp = (PendingIntent.getBroadcast(DrinkWater.this, 0,
+                new Intent("com.example.jason.drinkwater.NoteService"),
+                PendingIntent.FLAG_NO_CREATE) != null);
+
+        if (alarmUp)
+        {
+            notificationSwitch.setChecked(true);
+        }
+        else
+        {
+            notificationSwitch.setChecked(false);
+        }
+
+
         notificationSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
         {
             @Override
@@ -69,14 +86,14 @@ public class DrinkWater extends AppCompatActivity
                 if(!isChecked)
                 {
                     cancelAlarm();
-                    TextView tv = (TextView)findViewById(R.id.factLabel);
-                    tv.setText("switch" + isChecked);
+                    //TextView tv = (TextView)findViewById(R.id.factLabel);
+                    //tv.setText("switch" + isChecked);
                 }
                 else
                 {
                     setAlarm();
-                    TextView tv = (TextView)findViewById(R.id.factLabel);
-                    tv.setText("alarm" + isChecked);
+                    //TextView tv = (TextView)findViewById(R.id.factLabel);
+                    //tv.setText("alarm" + isChecked);
                 }
             }
         });
@@ -90,9 +107,6 @@ public class DrinkWater extends AppCompatActivity
         alarmMgr = (AlarmManager) getSystemService(ALARM_SERVICE);
 
         alarmMgr.setRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP, SystemClock.elapsedRealtime() + 60000, 60000, pendingIntent);
-
-
-
     }
 
     public void cancelAlarm()

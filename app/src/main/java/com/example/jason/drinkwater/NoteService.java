@@ -24,12 +24,6 @@ public class NoteService extends BroadcastReceiver
     {
         NotificationManager notificationManager = (NotificationManager) p_context.getSystemService(Context.NOTIFICATION_SERVICE);
 
-        Intent notificationIntent = new Intent(p_context, DrinkWater.class);
-
-        notificationIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-
-        PendingIntent pendingIntent = PendingIntent.getActivity(p_context, 0, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
-
         Uri alarmSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
 
         NotificationCompat.Builder mNotifyBuilder = new NotificationCompat.Builder(p_context);
@@ -39,7 +33,7 @@ public class NoteService extends BroadcastReceiver
                 .setContentText("Drink Water!!")
                 .setSound(alarmSound)
                 //.setAutoCancel(true).setWhen(when)
-                .setContentIntent(pendingIntent)
+                //.setContentIntent(pendingIntent)
                 .setVibrate(new long[]{1000, 1000, 1000, 1000, 1000});
 
         notificationManager.notify(MID, mNotifyBuilder.build());
