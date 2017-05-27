@@ -9,6 +9,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme" >
+
+        <!-- permission required to use Alarm Manager -->
+        <uses-permission android:name="com.android.alarm.permission.SET_ALARM"/>
+
+        <!-- Register the Alarm Receiver -->
+        <receiver android:name="com.example.jason.drinkwater.NoteService"/>
+
         <activity android:name=".DrinkWater" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

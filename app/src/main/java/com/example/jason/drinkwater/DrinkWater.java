@@ -1,14 +1,16 @@
 package com.example.jason.drinkwater;
 
+import android.app.Activity;
+import android.app.AlarmManager;
+import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Color;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Icon;
+import android.media.RingtoneManager;
+import android.net.Uri;
+import android.os.Build;
+import android.os.SystemClock;
 import android.support.v4.app.TaskStackBuilder;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -22,6 +24,9 @@ import java.util.Random;
 public class DrinkWater extends AppCompatActivity
 {
     public String[] facts = new String[10];
+
+    private AlarmManager alarmMgr;
+    private PendingIntent pendingIntent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -46,6 +51,7 @@ public class DrinkWater extends AppCompatActivity
         facts[8] = "Less than 1% of the water supply on earth can be used as drinking water.";
         facts[9] = "Groundwater can take a human lifetime just to traverse ONE me.";
         //facts[10] = "";
+        //fact[11] = "";
 
         setContentView(R.layout.activity_drink_water);
 
@@ -60,18 +66,39 @@ public class DrinkWater extends AppCompatActivity
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked)
             {
-                if(isChecked)
+                if(!isChecked)
                 {
-
+                    cancelAlarm();
+                    TextView tv = (TextView)findViewById(R.id.factLabel);
+                    tv.setText("switch" + isChecked);
                 }
                 else
                 {
-
+                    setAlarm();
+                    TextView tv = (TextView)findViewById(R.id.factLabel);
+                    tv.setText("alarm" + isChecked);
                 }
             }
         });
     }
 
+    public void setAlarm()
+    {
+        Intent intent = new Intent(this, NoteService.class);
+        pendingIntent = PendingIntent.getBroadcast(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+        alarmMgr = (AlarmManager) getSystemService(ALARM_SERVICE);
+
+        alarmMgr.setRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP, SystemClock.elapsedRealtime() + 60000, 60000, pendingIntent);
+
+
+
+    }
+
+    public void cancelAlarm()
+    {
+        alarmMgr.cancel(pendingIntent);
+    }
 
 
     public void nextFactButtonClick(View p_v)
@@ -84,31 +111,6 @@ public class DrinkWater extends AppCompatActivity
             i = r.nextInt(10);
         }
         tv.setText(facts[i]);
-
-
-
-
-
-        NotificationCompat.Builder notification =  new NotificationCompat.Builder(this);
-        notification.setSmallIcon(R.mipmap.ic_launcher)
-        .setContentTitle("My Notification")
-        .setContentText("Hello World!");
-
-        // create intent for activity in app
-        Intent resultIntent = new Intent(this, DrinkWater.class);
-
-        // create stack builder to navigate
-        TaskStackBuilder stackBuilder = TaskStackBuilder.create(this);
-
-        stackBuilder.addParentStack(DrinkWater.class);
-        stackBuilder.addNextIntent(resultIntent);
-
-        PendingIntent resultPendingIntent = stackBuilder.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);
-        notification.setContentIntent(resultPendingIntent);
-        NotificationManager mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-        // mID allows you to update the notification later on
-        mNotificationManager.notify(0, notification.build());
-
     }
 
 }
